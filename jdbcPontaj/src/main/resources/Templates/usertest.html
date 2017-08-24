@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h2>Users</h2>
+<table border="1">
+    <tr>
+        <th>id</th>
+        <th>fist name</th>
+        <th>last name</th>
+        <th>username</th>
+        <th>password</th>
+        <th>job id</th>
+        <th>email</th>
+    </tr>
+    <tr th:each = "user: ${users}">
+        <td th:text="${user.userId}">45</td>
+        <td th:text="${user.firstName}">vasi</td>
+        <td th:text="${user.lastName}">vasi</td>
+        <td th:text="${user.username}">vasi</td>
+        <td th:text="${user.password}">vasi</td>
+        <td th:text="${user.jobId}">45</td>
+        <td th:text="${user.email}">ionoi@boksan.com</td>
+    </tr>
+</table>
+</body>
+</html>

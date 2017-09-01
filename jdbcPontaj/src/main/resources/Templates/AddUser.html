@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New User</title>
+</head>
+<body>
+<form method="post" name="comment_form" id="comment_form" th:action="@{/createUser}" role="form">
+    <p> First Name:</p><br>
+    <input type="text" name="firstName"><br>
+    <p>Last Name</p> <br>
+    <input type="text" name="lastName"><br>
+    <p>User Name</p>
+    <input type="text" name="userName"><br>
+    <p>Password</p>
+    <input type="text" name="passWord"><br>
+    Email: <br>
+    <input type="text" name="email"><br>
+    <label>Job title:</label>
+    <select name="jobTitle">
+        <option value="1">Admin</option>
+        <option value="2">Project Lead</option>
+        <option value="3">Developer</option>
+    </select>
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

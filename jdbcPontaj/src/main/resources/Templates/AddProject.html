@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New Project</title>
+</head>
+<body>
+<form method="post" name="comment_form" id="comment_form" th:action="@{/createProject}" role="form">
+    <p> Name:</p><br>
+    <input type="text" name="projectName"><br>
+    <p>Start Date</p> <br>
+    <input type="text" name="startDate"><br>
+    <p>End Date</p>
+    <input type="text" name="endDate"><br>
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

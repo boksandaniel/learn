@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit user</title>
+</head>
+<body>
+<form method="post" name="comment_form" id="comment_form" th:action="@{/updateUser}" role="form">
+    Name:<br>
+    <input type="hidden" name="userId" th:value="${user.userId}">
+    <input type="text" name="firstName" th:value="${user.firstName}"><br>
+    Last name:<br>
+    <input type="text" name="lastName" th:value="${user.lastName}"><br>
+    <p>User Name:</p><br>
+    <input type="text" name="userName" th:value="${user.userName}"><br>
+    <p>Password:</p> <br>
+    <input type="text" name="password" th:value="${user.password}"><br>
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

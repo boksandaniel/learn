@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit project details</title>
+</head>
+<body>
+<form method="post" name="comment_form" id="comment_form" th:action="@{/updateProject}" role="form">
+    <input type="hidden" name="projectId" th:value="${project.projectId}">
+    <p>Name</p><br>
+    <input type="text" name="projectName" th:value="${project.projectName}"><br>
+    <p>Start Date</p> <br>
+    <input type="text" name="startDate" th:value="${project.startDate}"><br>
+    <p>End Date</p>
+    <input type="text" name="endDate" th:value="${project.endDate}"><br>
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

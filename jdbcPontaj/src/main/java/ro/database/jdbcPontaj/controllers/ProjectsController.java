@@ -14,10 +14,10 @@ public class ProjectsController {
     @Autowired
     ProjectsService projServ;
 
-    @RequestMapping(value = "/projtest", method = RequestMethod.GET)
+    @RequestMapping(value = "/Projects", method = RequestMethod.GET)
     public String index(Model md){
         md.addAttribute("projects", projServ.findAll());
 
-        return "projtest";
+        return "Projects";
     }
 }

@@ -10,7 +10,32 @@ public class Users {
     private int jobId;
     private String email;
 
-    public int getUserId() {
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setJobId(int jobId) {
+        this.jobId = jobId;
+    }
+
+
+    public int getUserId(){
         return userId;
     }
 
@@ -36,6 +61,10 @@ public class Users {
 
     public String getEmail() {
         return email;
+    }
+
+    public Users(){
+
     }
 
 

@@ -79,7 +79,7 @@ public class UsersService {
                     "jobId=?, email=? WHERE userId=" + user.getUserId();
             System.out.println(sql);
             return template.update(sql, user.getFirstName(), user.getLastName(), user.getUsername(),
-                    user.getPassword(), user.getEmail(), user.getJobId());
+                    user.getPassword(), user.getJobId(), user.getEmail());
 
         } else {
             return 0;
@@ -88,26 +88,28 @@ public class UsersService {
 
     public BigInteger userAdd(Users user){
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        String sql = "INSERT INTO people ( name, age, email) VALUES ( ?, ?, ?)";
+        String sql = "INSERT INTO users ( firstName, lastName, username, password, email) VALUES ( ?, ?, ?, ?, ?)";
         System.out.println(sql);
         //return template.update(sql, user.getId(), user.getName(), user.getAge(), user.getEmail());
 
         template.update(new PreparedStatementCreator() {
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
                 PreparedStatement pst = con.prepareStatement(sql, new String[] {"id"});
-                pst.setString(1, user.getName());
-                pst.setInt(2, user.getAge());
-                pst.setString(3, user.getEmail());
+                pst.setString(1, user.getFirstName());
+                pst.setString(2, user.getLastName());
+                pst.setString(3, user.getUsername());
+                pst.setString(4, user.getPassword());
+                pst.setString(5, user.getEmail());
                 return pst;
             }
         }, keyHolder);
         return (BigInteger) keyHolder.getKey();
     }
 
-    public int delete(Long id)
+    public int delete(int userId)
     {
-        String sql = "delete FROM people where id=?";
-        return template.update(sql, id);
+        String sql = "delete FROM users where userId=?";
+        return template.update(sql, userId);
     }
 
 }

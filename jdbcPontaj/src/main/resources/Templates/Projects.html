@@ -49,17 +49,18 @@
 						<th class="font">
 							Deadline
 						</th>
-                        <th>edit</th>
-                        <th>delete</th>
+                        <th class="font">Delete</th>
+                        <th class="font">Edit</th>
 					</tr>
 				</thead>
 				<tbody>
 				<tr th:each = "project: ${projects}">
+					<td th:text="${project.projectId}">0</td>
 					<td th:text="${project.projectName}">vasile</td>
 					<td th:text="${project.startDate}">2000</td>
 					<td th:text="${project.endDate}">5000</td>
-					<td><a th:href="@{'/Projects/{id}/deleteProject'(id=${project.projectId})}">delete</a></td>
-					<td><a th:href="@{'/Projects/{id}/EditProject'(id=${project.projectId})}">edit</a></td>
+					<td><a th:href="@{'/Projects/{projectId}/deleteProject'(projectId=${project.projectId})}">delete</a></td>
+					<td><a th:href="@{'/Projects/{projectId}/EditProject'(projectId=${project.projectId})}">edit</a></td>
 				</tr>
 				</tbody>
 			</table>

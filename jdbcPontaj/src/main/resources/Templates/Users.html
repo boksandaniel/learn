@@ -67,8 +67,8 @@
 							<td th:text="${user.password}">vasi</td>
 							<td th:text="${user.jobId}">45</td>
 							<td th:text="${user.email}">ionoi@boksan.com</td>
-							<td><a th:href="@{'/Users/{id}/deleteUser'(id=${project.projectId})}">delete</a></td>
-							<td><a th:href="@{'/Users/{id}/EditUser'(id=${user.userId})}">edit</a></td>
+							<td><a th:href="@{'/Users/{userId}/deleteUser'(userId=${user.userId})}">delete</a></td>
+							<td><a th:href="@{'/Users/{userId}/EditUser'(userId=${user.userId})}">edit</a></td>
 							</td>
 						</tr>
 						</tbody>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ro.database.jdbcPontaj.model.Users;
+import ro.database.jdbcPontaj.services.JobsService;
 import ro.database.jdbcPontaj.services.UsersService;
 
 
@@ -17,6 +18,9 @@ public class UsersController {
     @Autowired
     UsersService service;
 
+    @Autowired
+    JobsService jobsService;
+
     @RequestMapping(value = "/Users", method = RequestMethod.GET)
     public String index(Model md) {
         md.addAttribute("users", service.findAll());
@@ -24,19 +28,19 @@ public class UsersController {
         return "Users";
     }
 
-    @RequestMapping(value = "user/{id}/delete", method = RequestMethod.GET)
-    public String del (Model md, @PathVariable Long id) {
-        md.addAttribute("users", service.delete(id));
-        return "redirect:/user";
+    @RequestMapping(value = "Users/{userId}/deleteUser", method = RequestMethod.GET)
+    public String del (Model md, @PathVariable int userId) {
+        md.addAttribute("users", service.delete(userId));
+        return "redirect:/Users";
     }
 
-    @RequestMapping(value="user/new", method = RequestMethod.GET)
+    @RequestMapping(value="Users/AddUser", method = RequestMethod.GET)
     public String newUser(Model md) {
-       // md.addAttribute("jobTitles", jobTitleService.getAll());
-        return "new";
+        md.addAttribute("jobs", jobsService.findAll());
+        return "AddUser";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public String create(@RequestParam("firstName") String firstName,
                          @RequestParam("lastName") String lastName,
                          @RequestParam("userName") String userName,
@@ -51,11 +55,11 @@ public class UsersController {
         user.setEmail(email);
         user.setJobId(jobId);
         md.addAttribute("users", service.userAdd(user));
-        return "redirect:/user";
+        return "redirect:/Users";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(@RequestParam("id") Long id,
+    @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+    public String update(@RequestParam("userId") Long userId,
                          @RequestParam("firstName") String firstName,
                          @RequestParam("lastName") String lastName,
                          @RequestParam("userName") String userName,
@@ -63,22 +67,23 @@ public class UsersController {
                          @RequestParam("email") String email,
                          @RequestParam("jobId") int jobId,
                          Model md) {
-        Users user = service.findOne(id);
+        Users user = service.findOne(userId);
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setUsername(userName);
         user.setPassword(password);
-        user.setEmail(email);
         user.setJobId(jobId);
+        user.setEmail(email);
         md.addAttribute("users", service.userUpdate(user));
-        return "redirect:/user";
+        return "redirect:/Users";
     }
 
 
-    @RequestMapping(value = "user/{id}/edit", method = RequestMethod.GET)
-    public String edit(@PathVariable Long id, Model model) {
-        Users user = service.findOne(id);
+    @RequestMapping(value = "Users/{userId}/EditUser", method = RequestMethod.GET)
+    public String edit(@PathVariable Long userId, Model model) {
+        Users user = service.findOne(userId);
         model.addAttribute("user", user);
-        return "edit";
+        model.addAttribute("jobs", jobsService.findAll());
+        return "EditUser";
     }
 }

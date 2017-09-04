@@ -17,10 +17,8 @@
     Email: <br>
     <input type="text" name="email"><br>
     <label>Job title:</label>
-    <select name="jobTitle">
-        <option value="1">Admin</option>
-        <option value="2">Project Lead</option>
-        <option value="3">Developer</option>
+    <select name="jobId">
+        <option value="" th:each="job: ${jobs}" th:value="${user.jobId=job.jobId}" th:text="${job.title}"></option>
     </select>
     <button type="submit" id="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -1,10 +1,13 @@
 package ro.database.jdbcPontaj.model;
 
+
+import java.util.Date;
+
 public class Projects {
     private int projectId;
     private String projectName;
-    private String startDate;
-    private String endDate;
+    private Date startDate;
+    private Date endDate;
 
 
     public int getProjectId() {
@@ -15,15 +18,31 @@ public class Projects {
         return projectName;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public Projects(int projectId, String projectName, String startDate, String endDate){
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Projects(){
+
+    }
+
+    public Projects(int projectId, String projectName, Date startDate, Date endDate){
         this.projectId =projectId;
         this.projectName =projectName;
         this.startDate =startDate;

@@ -1,0 +1,6 @@
+ro/database/jdbcTest/ServletInitializer.class
+ro/database/jdbcTest/services/UserService.class
+ro/database/jdbcTest/App.class
+ro/database/jdbcTest/model/Users.class
+ro/database/jdbcTest/services/UserService$1.class
+ro/database/jdbcTest/controllers/UsersController.class

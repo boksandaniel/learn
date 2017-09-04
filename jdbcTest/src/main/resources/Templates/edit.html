@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit user</title>
+</head>
+<body>
+<form method="post" name="comment_form" id="comment_form" th:action="@{/update}" role="form">
+    Name:<br>
+    <input type="hidden" name="id" th:value="${user.id}">
+    <input type="text" name="name" th:value="${user.name}"><br>
+    Last name:<br>
+    <input type="text" name="age" th:value="${user.age}"><br>
+    Email: <br>
+    <input type="text" name="email" th:value="${user.email}"><br>
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

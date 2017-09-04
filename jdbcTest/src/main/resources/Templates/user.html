@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" th:href="@{../static/css/starter-template.css}">
+    <link th:href="@{../static/css/sticky-footer-navbar.css}" rel="stylesheet"/>
+</head>
+<body>
+<div layout:fragment="content">
+<h2>Users</h2>
+
+    <a class="btn btn-primary" th:href="@{'user/new'}">Add new users</a><br>
+<table class="table table-striped" id="posts_list">
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>age</th>
+        <th>email</th>
+        <th>action</th>
+    </tr>
+    <tr th:each = "user: ${users}">
+        <td th:text="${user.id}">2000</td>
+        <td th:text="${user.name}">vasile</td>
+        <td th:text="${user.age}">45</td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${title.name}"></td>
+        <td><a th:href="@{'/user/{id}/delete'(id=${user.id})}">delete</a></td>
+        <td><a th:href="@{'/user/{id}/edit'(id=${user.id})}">edit</a></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

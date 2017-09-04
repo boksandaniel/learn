@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New User</title>
+</head>
+<body>
+<form method="post" name="comment_form" id="comment_form" th:action="@{/create}" role="form">
+    Name:<br>
+
+    <input type="text" name="name"><br>
+    Age:<br>
+    <input type="text" name="age">
+    <br>Email: <br>
+    <input type="text" name="email"><br>
+    <label>Job title:</label>
+    <select name="jobTitle">
+
+        <option value="" th:each="title: ${jobTitles}" th:value="${title.id}" th:text="${title.name}"></option>
+    </select>
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

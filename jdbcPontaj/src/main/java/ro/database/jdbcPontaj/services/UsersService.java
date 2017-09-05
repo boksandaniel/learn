@@ -88,18 +88,18 @@ public class UsersService {
 
     public BigInteger userAdd(Users user){
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        String sql = "INSERT INTO users ( firstName, lastName, username, password, email) VALUES ( ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO users ( firstName, lastName, username, password, email, jobId) " +
+                "VALUES ( ?, ?, ?, ?, ?, ?)";
         System.out.println(sql);
-        //return template.update(sql, user.getId(), user.getName(), user.getAge(), user.getEmail());
-
         template.update(new PreparedStatementCreator() {
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                PreparedStatement pst = con.prepareStatement(sql, new String[] {"id"});
+                PreparedStatement pst = con.prepareStatement(sql, new String[] {"userId"});
                 pst.setString(1, user.getFirstName());
                 pst.setString(2, user.getLastName());
                 pst.setString(3, user.getUsername());
                 pst.setString(4, user.getPassword());
                 pst.setString(5, user.getEmail());
+                pst.setInt(6, user.getJobId());
                 return pst;
             }
         }, keyHolder);

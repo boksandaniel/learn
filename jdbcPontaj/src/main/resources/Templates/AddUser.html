@@ -13,12 +13,12 @@
     <p>User Name</p>
     <input type="text" name="userName"><br>
     <p>Password</p>
-    <input type="text" name="passWord"><br>
+    <input type="text" name="password"><br>
     Email: <br>
     <input type="text" name="email"><br>
     <label>Job title:</label>
     <select name="jobId">
-        <option value="" th:each="job: ${jobs}" th:value="${user.jobId=job.jobId}" th:text="${job.title}"></option>
+        <option value="" th:each="job: ${jobs}" th:value="${job.jobId}" th:text="${job.title}"></option>
     </select>
     <button type="submit" id="submit" class="btn btn-primary">Submit</button>
 </form>

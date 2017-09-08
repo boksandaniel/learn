@@ -14,9 +14,11 @@
     <input type="text" name="userName"><br>
     <p>Password</p>
     <input type="text" name="password"><br>
-    Email: <br>
+    <p>User enabled (1 or 0):</p> <br>
+    <input type="text" name="enabled"><br>
+    <p>Email:</p> <br>
     <input type="text" name="email"><br>
-    <label>Job title:</label>
+    <p>Job title:</p>
     <select name="jobId">
         <option value="" th:each="job: ${jobs}" th:value="${job.jobId}" th:text="${job.title}"></option>
     </select>

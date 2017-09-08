@@ -45,13 +45,16 @@ public class UsersController {
                          @RequestParam("lastName") String lastName,
                          @RequestParam("userName") String userName,
                          @RequestParam("password") String password,
+                         @RequestParam("enabled") boolean enabled,
                          @RequestParam("email") String email,
-                         @RequestParam("jobId") int jobId, Model md) {
+                         @RequestParam("jobId") int jobId,
+                         Model md) {
         Users user = new Users();
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setUsername(userName);
         user.setPassword(password);
+        user.setEnabled(enabled);
         user.setEmail(email);
         user.setJobId(jobId);
         md.addAttribute("users", service.userAdd(user));
@@ -64,6 +67,7 @@ public class UsersController {
                          @RequestParam("lastName") String lastName,
                          @RequestParam("userName") String userName,
                          @RequestParam("password") String password,
+                         @RequestParam("enabled") boolean enabled,
                          @RequestParam("email") String email,
                          @RequestParam("jobId") int jobId,
                          Model md) {
@@ -72,6 +76,7 @@ public class UsersController {
         user.setLastName(lastName);
         user.setUsername(userName);
         user.setPassword(password);
+        user.setEnabled(enabled);
         user.setJobId(jobId);
         user.setEmail(email);
         md.addAttribute("users", service.userUpdate(user));

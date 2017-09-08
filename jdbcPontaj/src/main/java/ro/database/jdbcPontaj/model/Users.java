@@ -9,9 +9,10 @@ public class Users {
     private String password;
     private int jobId;
     private String email;
+    private boolean enabled;
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public void setFirstName(String firstName) {
@@ -34,6 +35,10 @@ public class Users {
         this.jobId = jobId;
     }
 
+
+    public boolean getEnabled() {
+        return enabled;
+    }
 
     public int getUserId(){
         return userId;
@@ -68,12 +73,14 @@ public class Users {
     }
 
 
-    public Users(int userId, String firstName, String lastName, String username, String password, int jobId){
+    public Users(int userId, String firstName, String lastName, String username, String password, boolean enabled,
+                 int jobId){
         this.userId=userId;
         this.firstName=firstName;
         this.lastName=lastName;
         this.username=username;
         this.password=password;
+        this.enabled = enabled;
         this.jobId=jobId;
     }
 

@@ -34,6 +34,7 @@ public class UsersService {
                         resultSet.getString("lastName"),
                         resultSet.getString("username"),
                         resultSet.getString("password"),
+                        resultSet.getBoolean("enabled"),
                         resultSet.getInt("jobId"));
                 String email = resultSet.getString("email");
                 if (email != null) {
@@ -59,6 +60,7 @@ public class UsersService {
                             resultSet.getString("lastName"),
                             resultSet.getString("username"),
                             resultSet.getString("password"),
+                            resultSet.getBoolean("enabled"),
                             resultSet.getInt("jobId"));
                     String email = resultSet.getString("email");
                     if (email != null) {
@@ -75,11 +77,10 @@ public class UsersService {
 
     public int userUpdate(Users user) {
         if (user.getUserId() > 0) {
-            String sql = "UPDATE users SET firstName=?, lastName=?, username=?, password =?, " +
+            String sql = "UPDATE users SET firstName=?, lastName=?, username=?, password =?, enabled=?, " +
                     "jobId=?, email=? WHERE userId=" + user.getUserId();
-            System.out.println(sql);
             return template.update(sql, user.getFirstName(), user.getLastName(), user.getUsername(),
-                    user.getPassword(), user.getJobId(), user.getEmail());
+                    user.getPassword(), user.getEnabled(), user.getJobId(), user.getEmail());
 
         } else {
             return 0;
@@ -88,8 +89,8 @@ public class UsersService {
 
     public BigInteger userAdd(Users user){
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        String sql = "INSERT INTO users ( firstName, lastName, username, password, email, jobId) " +
-                "VALUES ( ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO users ( firstName, lastName, username, password, enabled, email, jobId) " +
+                "VALUES ( ?, ?, ?, ?, ?, ?, ?)";
         System.out.println(sql);
         template.update(new PreparedStatementCreator() {
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -98,8 +99,9 @@ public class UsersService {
                 pst.setString(2, user.getLastName());
                 pst.setString(3, user.getUsername());
                 pst.setString(4, user.getPassword());
-                pst.setString(5, user.getEmail());
-                pst.setInt(6, user.getJobId());
+                pst.setBoolean(5, user.getEnabled());
+                pst.setString(6, user.getEmail());
+                pst.setInt(7, user.getJobId());
                 return pst;
             }
         }, keyHolder);

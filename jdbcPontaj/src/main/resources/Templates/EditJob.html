@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Job</title>
+</head>
+<body>
+<form method="post" name="comment_form" id="comment_form" th:action="@{/updateJob}" role="form">
+    <input type="hidden" name="jobId" th:value="${job.jobId}">
+    <p>Title</p><br>
+    <input type="text" name="title" th:value="${job.title}"><br>
+    <p>Access Rights</p>
+    <select name="role">
+        <option value="" th:each="obj: ${jobs}" th:value="${obj.role}" th:text="${obj.role}"></option>
+    </select>
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

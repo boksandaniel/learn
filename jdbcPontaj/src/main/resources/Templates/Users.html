@@ -52,6 +52,7 @@
 							<th>last name</th>
 							<th>username</th>
 							<th>password</th>
+							<th>enabled</th>
 							<th>job id</th>
 							<th>email</th>
 							<th>edit</th>
@@ -65,6 +66,7 @@
 							<td th:text="${user.lastName}">vasi</td>
 							<td th:text="${user.username}">vasi</td>
 							<td th:text="${user.password}">vasi</td>
+							<td th:text="${user.enabled}">0</td>
 							<td th:text="${user.jobId}">45</td>
 							<td th:text="${user.email}">ionoi@boksan.com</td>
 							<td><a th:href="@{'/Users/{userId}/deleteUser'(userId=${user.userId})}">delete</a></td>

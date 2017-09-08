@@ -29,7 +29,7 @@ public class ProjectsController {
 
     @RequestMapping(value = "Projects/{projectId}/deleteProject", method = RequestMethod.GET)
     public String del (Model md, @PathVariable int projectId) {
-        md.addAttribute("users", projServ.delete(projectId));
+        md.addAttribute("projects", projServ.delete(projectId));
         return "redirect:/Projects";
     }
 

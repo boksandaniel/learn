@@ -15,11 +15,13 @@
     <input type="text" name="userName" th:value="${user.username}"><br>
     <p>Password:</p> <br>
     <input type="text" name="password" th:value="${user.password}"><br>
-    <label>Job title:</label>
+    <p>Enabled:</p> <br>
+    <input type="text" name="enabled" th:value="${user.enabled}"><br>
+    <p>Job title:</p>
     <select name="jobId">
         <option value="" th:each="job: ${jobs}" th:value="${user.jobId=job.jobId}" th:text="${job.title}"></option>
     </select>
-    Email: <br>
+    <p>Email:</p> <br>
     <input type="text" name="email" th:value="${user.email}"><br>
     <button type="submit" id="submit" class="btn btn-primary">Submit</button>
 </form>

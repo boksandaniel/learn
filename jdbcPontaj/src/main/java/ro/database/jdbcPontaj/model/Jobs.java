@@ -4,7 +4,7 @@ public class Jobs {
 
     private int jobId;
     private String title;
-    private String accessRights;
+    private String role;
 
 
     public int getJobId() {
@@ -23,21 +23,25 @@ public class Jobs {
         this.title = title;
     }
 
-    public String getAccessRights() {
-        return accessRights;
+    public String getRole() {
+        return role;
     }
 
-    public void setAccessRights(String accessRights) {
-        this.accessRights = accessRights;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public Jobs(){
 
     }
 
-    public Jobs(int jobId, String title, String accessRights){
+    public Jobs(String role){
+        this.role = role;
+    }
+
+    public Jobs(int jobId, String title, String role){
         this.jobId=jobId;
-        this.accessRights=accessRights;
+        this.role = role;
         this.title=title;
     }
 }

@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit Job</title>
 </head>
 <body>
-
+<form method="post" name="comment_form" id="comment_form" th:action="@{/updateAssignment}" role="form">
+    <input type="hidden" name="assignmentId" th:value="${assignment.assignmentId}">
+    <p>User:</p>
+    <select name="userId">
+        <option value="" th:each="user: ${users}" th:value="${assignment.userId = user.userId}" th:text="|${user.firstName} , ${user.lastName}|"></option>
+    </select>
+    <p>Job title:</p>
+    <select name="projectId">
+        <option value="" th:each="project: ${projects}" th:value="${assignment.projectId = project.projectId}" th:text="${project.projectName}"></option>
+    </select>
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+</form>
 </body>
 </html>

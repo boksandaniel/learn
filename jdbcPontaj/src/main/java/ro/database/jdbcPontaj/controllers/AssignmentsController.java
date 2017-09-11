@@ -9,12 +9,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ro.database.jdbcPontaj.model.Assignments;
 import ro.database.jdbcPontaj.services.AssignmentsService;
+import ro.database.jdbcPontaj.services.ProjectsService;
+import ro.database.jdbcPontaj.services.UsersService;
 
 @Controller
 public class AssignmentsController {
 
     @Autowired
     AssignmentsService serv;
+
+    @Autowired
+    UsersService userServ;
+
+    @Autowired
+    ProjectsService projServ;
 
     @RequestMapping(value = "/Assignments", method = RequestMethod.GET)
     public String index(Model md){
@@ -23,7 +31,7 @@ public class AssignmentsController {
         return "Assignments";
     }
 
-    @RequestMapping(value = "Assignments/{assignmentId}/deleteAssign", method = RequestMethod.GET)
+    @RequestMapping(value = "Assignments/{assignmentId}/deleteAssignment", method = RequestMethod.GET)
     public String del (Model md, @PathVariable int assignmentId) {
         md.addAttribute("assignments", serv.delete(assignmentId));
         return "redirect:/Assignments";
@@ -31,11 +39,12 @@ public class AssignmentsController {
 
     @RequestMapping(value="Assignments/AddAssignment", method = RequestMethod.GET)
     public String newUser(Model md) {
-
+        md.addAttribute("users", userServ.findAll());
+        md.addAttribute("projects", projServ.findAll());
         return "AddAssignment";
     }
 
-    @RequestMapping(value = "/createAssign", method = RequestMethod.POST)
+    @RequestMapping(value = "/createAssignment", method = RequestMethod.POST)
     public String create(@RequestParam("userId") int userId,
                          @RequestParam("projectId") int projectId, Model md) {
         Assignments assign = new Assignments();
@@ -45,7 +54,7 @@ public class AssignmentsController {
         return "redirect:/Assignments";
     }
 
-    @RequestMapping(value = "/updateAssign", method = RequestMethod.POST)
+    @RequestMapping(value = "/updateAssignment", method = RequestMethod.POST)
     public String update(@RequestParam("assignmentId") int assignmentId,
                          @RequestParam("userId") int userId,
                          @RequestParam("projectId") int projectId,
@@ -62,6 +71,8 @@ public class AssignmentsController {
     public String edit(@PathVariable int assignmentId, Model model) {
         Assignments assign = serv.findOne(assignmentId);
         model.addAttribute("assignment", assign);
+        model.addAttribute("users", userServ.findAll());
+        model.addAttribute("projects", projServ.findAll());
         return "EditAssignment";
     }
 }

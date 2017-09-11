@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Welcome Security with Spring Boot!</title>
+    <title>Admin</title>
 </head>
 <body>
-<h1 style="color:blue"> Hello! This is Admin Page!</h1>
+<h2 style="color:blue"> Welcome administrator</h2>
 
-<a style="color:blue" th:href="@{/}">Go to Home Page</a>
+<a style="color:red" th:href="@{/Timetable}">Go to your timetable page</a>
+
+<br/>
+
+<a style="color:blue" th:href="@{/Assignments}">View/modify current project asignments</a>
+
+<br/>
+
+<a style="color:blue" th:href="@{/Jobs}">View/modify permission rights</a>
+
+<br/>
+
+
+<a style="color:blue" th:href="@{/Projects}">View/modify ongoing projects</a>
+
+<br/>
+
+<a style="color:blue" th:href="@{/Users}">View/modify registered users</a>
 
 <br/>
 

@@ -84,7 +84,7 @@ public class JobsService {
         String sql = "INSERT INTO jobs ( title, role) VALUES ( ?, ?)";
         template.update(new PreparedStatementCreator() {
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                PreparedStatement pst = con.prepareStatement(sql, new String[] {"id"});
+                PreparedStatement pst = con.prepareStatement(sql, new String[] {"jobId"});
                 pst.setString(1, job.getTitle());
                 pst.setString(2, job.getRole());
                 return pst;

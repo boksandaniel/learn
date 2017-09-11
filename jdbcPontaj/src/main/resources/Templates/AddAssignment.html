@@ -5,13 +5,13 @@
     <title>New Assignment</title>
 </head>
 <body>
-<form method="post" name="comment_form" id="comment_form" th:action="@{/createAssign}" role="form">
+<form method="post" name="comment_form" id="comment_form" th:action="@{/createAssignment}" role="form">
     <p>User:</p>
     <select name="userId">
-        <option value="" th:each="user: ${users}" th:value="${user.userId}" th:text="${user.firstName}, ${user.lastName}"></option>
+        <option value="" th:each="user: ${users}" th:value="${user.userId}" th:text="|${user.firstName} , ${user.lastName}|"></option>
     </select>
     <p>Job title:</p>
-    <select name="projectID">
+    <select name="projectId">
         <option value="" th:each="project: ${projects}" th:value="${project.projectId}" th:text="${project.projectName}"></option>
     </select>
     <button type="submit" id="submit" class="btn btn-primary">Submit</button>

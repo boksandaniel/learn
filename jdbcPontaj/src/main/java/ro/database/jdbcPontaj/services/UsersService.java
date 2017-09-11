@@ -1,5 +1,6 @@
 package ro.database.jdbcPontaj.services;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -71,8 +72,6 @@ public class UsersService {
                 return null;
             }
         });
-
-
     }
 
     public int userUpdate(Users user) {

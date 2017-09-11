@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Assignments List</title>
+
+    <link th:href="@{css/bootstrap.min.css}" href="../public/css/bootstrap.min.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/font-awesome.min.css}" href="../public/css/font-awesome.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/form-elements.css}" href="../public/css/form-elements.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/style.css}" href="../public/css/style.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+
 </head>
 <body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-10 title">
+                    <h2>
+                        Assignments List
+                    </h2>
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <br>
+                    <a class="btn btn-primary" th:href="@{'Assignments/AddAssignment'}">Add new assignment</a><br>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>user</th>
+                            <th>project</th>
+                            <th>edit</th>
+                            <th>delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each = "assignment: ${assignments}">
+                            <td th:text="${assignment.assignmentId}">45</td>
+                            <td th:text="${assignment.name}">lid progremar</td>
+                            <td th:text="${assignment.project}">admin</td>
+                            <td><a th:href="@{'/Assignments/{assignmentId}/EditAssignment'(assignmentId=${assignment.assignmentId})}">edit</a></td>
+                            <td><a th:href="@{'/Assignments/{assignmentId}/deleteAssignment'(assignmentId=${assignment.assignmentId})}">delete</a></td>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

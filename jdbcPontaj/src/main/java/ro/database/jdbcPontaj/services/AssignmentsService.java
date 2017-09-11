@@ -25,13 +25,16 @@ public class AssignmentsService {
     JdbcTemplate template;
 
     public List<Assignments> findAll() {
-        String sql = "select * from assignments";
+        String sql = "SELECT assignmentId, CONCAT_WS(', ',users.firstName, users.lastName) as name, " +
+                "projects.projectName as project from assignments inner join users " +
+                "on assignments.userId = users.userId inner join projects " +
+                "on assignments.projectId = projects.projectId";
         RowMapper<Assignments> rm = new RowMapper<Assignments>() {
             @Override
             public Assignments mapRow(ResultSet resultSet, int i) throws SQLException {
                 Assignments assign = new Assignments(resultSet.getInt("assignmentId"),
-                        resultSet.getInt("userId"),
-                        resultSet.getInt("projectId"));
+                        resultSet.getString("name"),
+                        resultSet.getString("project"));
                 return assign;
             }
         };
@@ -58,19 +61,20 @@ public class AssignmentsService {
 
     public int assignUpdate (Assignments assign) {
         if (assign.getAssignmentId() > 0) {
-            String sql = "UPDATE assignments SET userId=?, projectId=? WHERE projectId=" + assign.getProjectId();
+            String sql = "UPDATE assignments SET userId=?, projectId=? WHERE assignmentId=" + assign.getAssignmentId();
             return template.update(sql, assign.getUserId(), assign.getProjectId());
         } else {
             return 0;
         }
     }
 
+
     public BigInteger assignAdd(Assignments assign){
         KeyHolder keyHolder = new GeneratedKeyHolder();
         String sql = "INSERT INTO assignments ( userId, projectId) VALUES ( ?, ?)";
         template.update(new PreparedStatementCreator() {
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                PreparedStatement pst = con.prepareStatement(sql, new String[] {"id"});
+                PreparedStatement pst = con.prepareStatement(sql, new String[] {"assignmentId"});
                 pst.setInt(1, assign.getUserId());
                 pst.setInt(2, assign.getProjectId());
                 return pst;

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{css/bootstrap.min.css}" href="../public/css/bootstrap.min.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/font-awesome.min.css}" href="../public/css/font-awesome.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/form-elements.css}" href="../public/css/form-elements.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/style.css}" href="../public/css/style.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/color.css}" href="../public/css/color.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+
+
+</head>
+<body>
+<title>Edit Job</title>
+<div class="container-fluid bkr2">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row ">
+                <div class="col-md-12 title" >
+                    <h3 style="color: #262626; font-weight: bold"  class="margine">
+                        Edit jobs
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="row">
+                <div class="col-md-12">
+
+<form method="post" name="comment_form" id="comment_form" th:action="@{/updateJob}" role="form">
+    <br>
+    <input type="hidden" name="jobId" th:value="${job.jobId}">
+    <h3 class="clrpdg" style="font-weight: bold"> Title</h3>
+    <input type="text" class="clrpdg" name="title" th:value="${job.title}"><br>
+    <h3 class="clrpdg" style="font-weight: bold"> Access Rights
+    <select name="role">
+    <option value="" th:each="obj: ${jobs}" th:value="${obj.role}" th:text="${obj.role}"></option>
+    </select></h3>
+    <button type="submit" id="submit" class="clrpdg" style="font-weight: bold">Submit</button>
+</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

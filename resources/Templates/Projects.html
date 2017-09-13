@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Projects</title>
+
+      <link th:href="@{css/bootstrap.min.css}" href="../public/css/bootstrap.min.css"
+            rel="stylesheet" type="text/css" media="screen"/>
+      <link th:href="@{css/font-awesome.min.css}" href="../public/css/font-awesome.css"
+            rel="stylesheet" type="text/css" media="screen"/>
+      <link th:href="@{css/form-elements.css}" href="../public/css/form-elements.css"
+            rel="stylesheet" type="text/css" media="screen"/>
+	  <link th:href="@{css/style.css}" href="../public/css/style.css"
+			rel="stylesheet" type="text/css" media="screen"/>
+	  <link th:href="@{css/color.css}" href="../public/css/color.css"
+			rel="stylesheet" type="text/css" media="screen"/>
+
+
+  </head>
+  <body>
+
+    <div class="container-fluid bkr">
+	<div class="row">
+		<div class="col-md-9">
+			<div class="row ">
+				<br>
+				<div class="col-md-12 title" >
+					<h2 style="color: black"; class="mrg"  >
+						Project Management
+					</h2>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col-md-12">
+			<br>
+			<div class="row">
+				<div class=" clr2 col-md-3 ">
+					<a href="Admin.html "><h3 style="color: #2b669a;  margin-left: 5%" > Go to Admin Page</h3> </a>
+				</div>
+			</div>
+               <a class="btn btn-primary clr4" th:href="@{'Projects/AddProject'}">Add new projects</a><br>
+				</div>
+                <div class="col-md-8"></div>
+			</div>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="font">Project Id</th>
+						<th class="font">Name</th>
+						<th class="font">Started</th>
+						<th class="font">Deadline</th>
+                        <th class="font">Edit</th>
+                        <th class="font">Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr th:each = "project: ${projects}">
+					<td th:text="${project.projectId}">1</td>
+					<td th:text="${project.projectName}">Ionescu</td>
+					<td th:text="${project.startDate}">01.08.201</td>
+					<td th:text="${project.endDate}">30.08.2017</td>
+					<td><a class="cls2" th:href="@{'/Projects/{projectId}/EditProject'(projectId=${project.projectId})}">edit</a></td>
+					<td><a class="cls2" th:href="@{'/Projects/{projectId}/deleteProject'(projectId=${project.projectId})}">delete</a></td>
+
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+	<script th:src="@{../public/js/jquery-1.11.1.min.js}" rel="text/javascript"></script>
+	<script th:src="@{../public/js/jquery.backstretch.min.js}" rel="text/javascript"></script>
+	<script th:src="@{../public/js/scripts.js}" rel="text/javascript"></script>
+	<script th:src="@{../public/js/placeholder.js}" rel="text/javascript"></script>
+    <script th:src="@{../public/js/bootstrap.min.js}" rel="text/javascript"></script>
+    <script th:src="@{../public/js/scripts.js}" rel="text/javascript"></script>
+  </body>
+</html>

@@ -80,7 +80,6 @@ public class ProjectsService {
             }
         }, keyHolder);
         return (BigInteger) keyHolder.getKey();
-
     }
 
     public int delete(int projectId)

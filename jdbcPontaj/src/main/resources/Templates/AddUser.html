@@ -3,26 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>New User</title>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen"/>
+
 </head>
 <body>
-<form method="post" name="comment_form" id="comment_form" th:action="@{/createUser}" role="form">
-    <p> First Name:</p><br>
-    <input type="text" name="firstName"><br>
-    <p>Last Name</p> <br>
-    <input type="text" name="lastName"><br>
-    <p>User Name</p>
-    <input type="text" name="userName"><br>
-    <p>Password</p>
-    <input type="text" name="password"><br>
-    <p>User enabled (1 or 0):</p> <br>
-    <input type="text" name="enabled"><br>
-    <p>Email:</p> <br>
-    <input type="text" name="email"><br>
-    <p>Job title:</p>
-    <select name="jobId">
-        <option value="" th:each="job: ${jobs}" th:value="${job.jobId}" th:text="${job.title}"></option>
-    </select>
-    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="container-fluid bkr2">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row ">
+                <div class="col-md-12 title" >
+                    <h3 style="color: #0f0f0f; font-weight: bold"  class="margine">Add new user</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="post" name="comment_form" id="comment_form" th:action="@{/createUser}" role="form">
+                        <div class="form-group">
+                            <h4 class="control-label"> First Name:</h4>
+                            <input type="text" name="firstName" class="form-control"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">Last Name</h4>
+                            <input type="text" name="lastName" class="form-control"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">User Name</h4>
+                            <input type="text" name="userName" class="form-control"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">Password</h4>
+                            <input type="text" name="password" class="form-control"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">User enabled (1 or 0):</h4>
+                            <input type="text" name="enabled" class="form-control"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">Email:</h4>
+                            <input type="text" name="email" class="form-control"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">Job title:</h4>
+                            <select name="jobId" class="form-control">
+                                <option value="" th:each="job: ${jobs}" th:value="${job.jobId}" th:text="${job.title}"></option>
+                            </select>
+                        </div>
+                        <button type="submit" id="submit" class="btn btn-primary" style="font-weight: bold">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

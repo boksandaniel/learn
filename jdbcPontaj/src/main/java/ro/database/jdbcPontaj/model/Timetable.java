@@ -1,6 +1,9 @@
 package ro.database.jdbcPontaj.model;
 
-import java.sql.Time;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class Timetable {
@@ -8,7 +11,12 @@ public class Timetable {
     private int timetableId;
     private int assignmentId;
     private Date date;
-    private Time hoursWorked;
+    private String project;
+
+    @NotNull
+    @Min(0)
+    @Max(12)
+    private int hoursWorked;
 
 
     public int getTimetableId() {
@@ -35,18 +43,34 @@ public class Timetable {
         this.date = date;
     }
 
-    public Time getHoursWorked() {
+    public int getHoursWorked() {
         return hoursWorked;
     }
 
-    public void setHoursWorked(Time hoursWorked) {
+    public void setHoursWorked(int hoursWorked) {
         this.hoursWorked = hoursWorked;
     }
+
+    public String getProject() {
+        return project;
+    }
+
+    public void setProject(String project) {
+        this.project = project;
+    }
+
 
     public Timetable() {
     }
 
-    public Timetable(int timetableId, int assignmentId, Date date, Time hoursWorked) {
+    public Timetable(int timetableId, String project, Date date, int hoursWorked) {
+        this.timetableId = timetableId;
+        this.project=project;
+        this.date = date;
+        this.hoursWorked = hoursWorked;
+    }
+
+    public Timetable(int timetableId, int assignmentId, Date date, int hoursWorked) {
         this.timetableId = timetableId;
         this.assignmentId = assignmentId;
         this.date = date;

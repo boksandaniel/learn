@@ -3,27 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit user</title>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen"/>
 </head>
 <body>
-<form method="post" name="comment_form" id="comment_form" th:action="@{/updateUser}" role="form">
-    Name:<br>
-    <input type="hidden" name="userId" th:value="${user.userId}">
-    <input type="text" name="firstName" th:value="${user.firstName}"><br>
-    Last name:<br>
-    <input type="text" name="lastName" th:value="${user.lastName}"><br>
-    <p>User Name:</p><br>
-    <input type="text" name="userName" th:value="${user.username}"><br>
-    <p>Password:</p> <br>
-    <input type="text" name="password" th:value="${user.password}"><br>
-    <p>Enabled:</p> <br>
-    <input type="text" name="enabled" th:value="${user.enabled}"><br>
-    <p>Job title:</p>
-    <select name="jobId">
-        <option value="" th:each="job: ${jobs}" th:value="${user.jobId=job.jobId}" th:text="${job.title}"></option>
-    </select>
-    <p>Email:</p> <br>
-    <input type="text" name="email" th:value="${user.email}"><br>
-    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="container-fluid bkr2">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row ">
+                <div class="col-md-12 title" >
+                    <h3 style="color: #0f0f0f; font-weight: bold" class="margine">Edit user</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="post" name="comment_form" id="comment_form" th:action="@{/updateUser}" role="form">
+                        <input type="hidden" name="userId" th:value="${user.userId}">
+                        <div class="form-group">
+                            <h4 class="control-label"> First Name:</h4>
+                            <input type="text" name="firstName" th:value="${user.firstName}" class="form-control"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">Last Name</h4>
+                            <input type="text" name="lastName" th:value="${user.lastName}" class="form-control"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">User Name</h4>
+                            <input type="text" name="userName" th:value="${user.username}" class="form-control"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">Password</h4>
+                            <input type="text" name="password" th:value="${user.password}" class="form-control"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">User enabled (1 or 0):</h4>
+                            <input type="text" name="enabled" th:value="${user.enabled}" class="form-control"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">E-mail</h4>
+                            <input class="form-control" type="text" name="email" th:value="${user.email}"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">Job title:</h4>
+                            <select name="jobId" class="form-control">
+                                <option value="" th:each="job: ${jobs}" th:value="${user.jobId=job.jobId}" th:text="${job.title}"></option>
+                            </select>
+                        </div>
+                        <button type="submit" id="submit" class="btn btn-primary" style="font-weight: bold">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

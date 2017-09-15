@@ -1,11 +1,12 @@
 package ro.database.jdbcPontaj.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ro.database.jdbcPontaj.services.UsersService;
+import ro.database.jdbcPontaj.services.TimetableService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,20 +14,22 @@ import javax.servlet.http.HttpServletRequest;
 public class LogInController {
 
     @Autowired
-    UsersService service;
+    TimetableService serv;
 
-    @RequestMapping(value={"/","Home"}, method = RequestMethod.GET)
-    public String returnAfterLogin(HttpServletRequest request) {
+    @RequestMapping(value={"/"}, method = RequestMethod.GET)
+    public String returnAfterLogin(HttpServletRequest request, Model md) {
+        /*org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String loginname = auth.getName();
+        System.out.println(loginname);
+        md.addAttribute("username", serv.findAll(loginname));*/
         if (request.isUserInRole("ROLE_ADMIN")) {
             return "Admin";
         }
-        return "Timetable";
+        else {
+            return "Home";
+        }
     }
 
-    @RequestMapping(value={"/Timetable"}, method = RequestMethod.GET)
-    public String welcome(){
-        return "Timetable";
-    }
 
     @RequestMapping(value="/Admin", method = RequestMethod.GET)
     public String admin(){
@@ -39,8 +42,13 @@ public class LogInController {
     }
 
     @RequestMapping(value="/LoginError", method = RequestMethod.GET)
-    public String Error403(){
+    public String error403(){
         return "LoginError";
+    }
+
+    @RequestMapping(value = "/Home", method = RequestMethod.GET)
+    public String home(){
+        return "Home";
     }
 
 }

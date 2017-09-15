@@ -2,17 +2,49 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>New Job</title>
+
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen"/>
+
 </head>
 <body>
-<form method="post" name="comment_form" id="comment_form" th:action="@{/createJob}" role="form">
-    <p> Title</p><br>
-    <input type="text" name="title"><br>
-    <p>Access Rights</p> <br>
-    <select name="role">
-        <option value="" th:each="obj: ${jobs}" th:value="${obj.role}" th:text="${obj.role}"></option>
-    </select>
-    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-</form>
+
+<div class="container-fluid bkr2">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row ">
+                <div class="col-md-12 title" >
+                    <h3 style="color: #0f0f0f; font-weight: bold"  class="margine">
+                        Add new job
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="post" name="comment_form" id="comment_form" th:action="@{/createJob}" role="form">
+                        <div class="form-group">
+                            <h4 class="control-label">Title</h4><br>
+                            <input type="text" name="title" class="form-control"><br>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label">Access Rights</h4> <br>
+                            <select name="role" class="form-control">
+                                <option value="" th:each="obj: ${jobs}" th:value="${obj.role}" th:text="${obj.role}"></option>
+                            </select>
+                        </div>
+                        <button type="submit" id="submit" class="btn btn-primary" style="font-weight: bold">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

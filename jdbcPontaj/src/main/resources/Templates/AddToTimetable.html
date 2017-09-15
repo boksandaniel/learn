@@ -4,60 +4,67 @@
     <meta charset="UTF-8">
     <title>Add new entry</title>
 
-    <link th:href="@{css/bootstrap.min.css}" href="../public/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen"/>
-    <link th:href="@{css/font-awesome.min.css}" href="../public/css/font-awesome.css" rel="stylesheet" type="text/css" media="screen"/>
-    <link th:href="@{css/form-elements.css}" href="../public/css/form-elements.css" rel="stylesheet" type="text/css" media="screen"/>
-    <link th:href="@{css/style.css}" href="../public/css/style.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen"/>
     <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css}" rel="stylesheet"/>
 
+
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js}"></script>
+    <script th:src="@{http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js}"></script>
+
+    <script th:inline="javascript">
+        $(document).ready(function () {
+
+            $(function () {
+                $(".datepicker").datepicker({
+                    todayBtn: "linked",
+                    autoclose: true,
+                    todayHighlight: true
+                });
+            });
+        });
+
+    </script>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid bkr2">
     <div class="row">
-        <div class="col-md-12 title">
-            <h2>Add a new entry</h2>
+        <div class="col-md-9">
+            <div class="row ">
+                <div class="col-md-12 title" >
+                    <h3 style="color: #0f0f0f; font-weight: bold"  class="margine">Add a new entry</h3>
+                </div>
+            </div>
         </div>
     </div>
-<div class="row font">
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-12">
-                <form method="post" name="comment_form" id="comment_form" th:action="@{/createEntry}" role="form">
-                    <p> Project</p><br>
-                    <select name="assignmentID">
-                        <option value="" th:each="project: ${projects}" th:each="assignment: ${assignments}" th:if="${project.projectId} eq ${assignment.projectId}" th:value="${assignment.assignmentId}" th:text="${project.projectName}"></option>
-                    </select>
-                    <p>Date</p> <br>
-                    <input class="datepicker" type="text" name="date"><br>
-                    <p>Number of hours (hh:mm:ss)</p>
-                    <input type="text" name="hoursWorked" th:field="*{hoursWorked}"><br>
-                    <p th:if="${#fields.hasErrors('age')}" th:errors="*{hoursWorked}">Number of hours error</p>
-                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="row">
+                <div class="col-md-12">
+                <form method="post" name="comment_form" id="comment_form" th:action="@{/createEntry}" th:object="${timetable}" role="form">
+                    <div class="form-group">
+                        <br><h4 class="control-label">Project</h4>
+                        <select class="form-control" name="assignmentId">
+                            <option value="" th:each="assignment: ${assignments}" th:value="${assignment.assignmentId}" th:text="${assignment.assignmentId}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <br><h4 class="control-label"> Date:</h4>
+                        <input type="text" name="date" class="form-control datepicker"><br>
+                    </div>
+                    <div class="form-group">
+                        <br><h4 class="control-label"> Number of hours:</h4>
+                        <input type="text" name="hoursWorked" th:field="*{hoursWorked}"><br>
+                        <p th:if="${#fields.hasErrors('hoursWorked')}" th:errors="*{hoursWorked}">Age Error</p>
+                    </div>
+
+                    <button type="submit" id="submit" class="btn btn-primary" style="font-weight: bold">Submit</button>
                 </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-</div>
 </body>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
--->
-<script type="text/javascript" src="../public/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        $(function () {
-            $(".datepicker").datepicker({
-                todayBtn: "linked",
-                autoclose: true,
-                todayHighlight: true
-            });
-        });
-    });
-
-</script>
 </html>

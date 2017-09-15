@@ -2,11 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Main page</title>
+
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css}" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/style.css}" href="../public/css/style.css" rel="stylesheet" type="text/css" media="screen"/>
 </head>
 <body>
-<h2>Welcome to the main page</h2>
-<a style="color:blue" th:href="@{/Welcome}">Go to your timetable page!</a>
+<h2 style="color:blue"> Welcome user</h2>
+
+<br>
+
+<p>Have a very safe and productive day</p>
+
+<a style="color:red" th:href="@{/Timetable}">Go to your timetable page</a>
+
 <br/>
-<a style="color:blue" th:href="@{/Admin}">Go to Admin Page!</a>
 </body>
 </html>

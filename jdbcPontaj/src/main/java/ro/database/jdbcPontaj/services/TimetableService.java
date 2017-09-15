@@ -23,24 +23,26 @@ public class TimetableService {
     @Autowired
     JdbcTemplate template;
 
-    public List<Timetable> findAll(String username) {
-        String sql = " SELECT * FROM timetables INNER join assignments" +
-                " on assignments.assignmentId = timetables.assignmentId INNER JOIN users " +
-                "on users.userId = assigments.userId where username=" +username;
+    public List<Timetable> findAll(String loginname) {
+        String sql = "  SELECT timetables.timetableId, timetables.assignmentId, timetables.date, " +
+                "timetables.hoursWorked, users.username, projects.projectName AS project " +
+                "FROM timetables INNER join assignments on timetables.assignmentId = assignments.assignmentId " +
+                "INNER JOIN projects on assignments.projectId = projects.projectId " +
+                "INNER JOIN users on users.userId = assignments.userId where username= ?";
 
         RowMapper<Timetable> rm = new RowMapper<Timetable>() {
             @Override
             public Timetable mapRow(ResultSet resultSet, int i) throws SQLException {
                 Timetable timetable = new Timetable(resultSet.getInt("timetableId"),
-                        resultSet.getInt("assignmentId"),
+                        resultSet.getString("project"),
                         resultSet.getDate("date"),
-                        resultSet.getTime("hoursWorked"));
+                        resultSet.getInt("hoursWorked"));
 
                 return timetable;
             }
         };
 
-        return template.query(sql, rm);
+        return template.query(sql, rm, loginname);
     }
 
     public BigInteger timetableAdd(Timetable timetable){
@@ -52,12 +54,10 @@ public class TimetableService {
 
                 pst.setInt(1, timetable.getAssignmentId());
                 pst.setDate(2, new java.sql.Date(timetable.getDate().getTime()));
-                pst.setDate(3, new java.sql.Date(timetable.getHoursWorked().getTime()));
+                pst.setInt(3, timetable.getHoursWorked());
                 return pst;
             }
         }, keyHolder);
         return (BigInteger) keyHolder.getKey();
     }
-
-
 }

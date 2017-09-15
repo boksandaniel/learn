@@ -1,16 +1,79 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Timetable</title>
+
+    <link th:href="@{css/bootstrap.min.css}" href="../public/css/bootstrap.min.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/font-awesome.min.css}" href="../public/css/font-awesome.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/form-elements.css}" href="../public/css/form-elements.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/style.css}" href="../public/css/style.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+
 </head>
 <body>
-<h1 style="color:blue"> Hello! This is Welcome Page!</h1>
 
-<a style="color:blue" th:href="@{/}">Go to Home Page!</a>
-<br/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <br>
+                    <a class="btn btn-primary" th:href="@{'Timetable/AddToTimetable'}">Add new entry</a><br>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 title">
+                    <h2>Timetable</h2>
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
 
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>assignment</th>
+                            <th>date</th>
+                            <th>number of hours</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each = "timetable: ${timetables}">
+                            <td th:text="${timetable.timetableId}">45</td>
+                            <td th:text="${timetable.project}">vasi</td>
+                            <td th:text="${timetable.date}">1 ian</td>
+                            <td th:text="${timetable.hoursWorked}">3000</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+</div>
+
+<script th:src="@{../public/js/jquery-1.11.1.min.js}" rel="text/javascript"></script>
+<script th:src="@{../public/js/bootstrap.min.js}" rel="text/javascript"></script>
+<script th:src="@{../public/js/jquery.backstretch.min.js}" rel="text/javascript"></script>
+<script th:src="@{../public/js/scripts.js}" rel="text/javascript"></script>
 </body>
 </html>

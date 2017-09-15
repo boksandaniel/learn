@@ -2,8 +2,10 @@ package ro.database.jdbcPontaj.model;
 
 public class Assignments {
     private int assignmentId;
+
     private int userId;
     private int projectId;
+
     private String name;
     private String project;
 

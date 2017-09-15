@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
-import ro.database.jdbcPontaj.controllers.AssignmentsController;
-import ro.database.jdbcPontaj.controllers.JobsController;
-import ro.database.jdbcPontaj.controllers.ProjectsController;
-import ro.database.jdbcPontaj.controllers.UsersController;
+import ro.database.jdbcPontaj.controllers.*;
 
 @SpringBootApplication
 @EnableAsync
@@ -25,6 +22,9 @@ public class App
 
     @Autowired
     AssignmentsController serv;
+
+    @Autowired
+    TimetableController timetable;
 
     public static void main( String[] args )
     {

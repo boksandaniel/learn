@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<link th:href="@{css/bootstrap.min.css}" href="../public/css/bootstrap.min.css"
+      rel="stylesheet" type="text/css" media="screen"/>
+<link th:href="@{css/font-awesome.min.css}" href="../public/css/font-awesome.css"
+      rel="stylesheet" type="text/css" media="screen"/>
+<link th:href="@{css/form-elements.css}" href="../public/css/form-elements.css"
+      rel="stylesheet" type="text/css" media="screen"/>
+<link th:href="@{css/style.css}" href="../public/css/style.css"
+      rel="stylesheet" type="text/css" media="screen"/>
+<link th:href="@{css/color.css}" href="../public/css/color.css"
+      rel="stylesheet" type="text/css" media="screen"/>
+
+
+
+</head>
+<body>
+<title>Admin</title>
+<div class="container-fluid bkr">
+<div class="row">
+<br><br><br><br><br>
+<h1 style="color:blue;font-weight: bold"> Welcome administrator</h1>
+
+<a style="color:red" th:href="@{/Timetable}">Go to your timetable page</a>
+
+<br/>
+
+<a style="color:blue" th:href="@{/Assignments}">View/modify current project assignments</a>
+
+<br/>
+
+<a style="color:blue" th:href="@{/Jobs}">View/modify permission rights</a>
+
+<br/>
+
+
+<a style="color:blue" th:href="@{/Projects}">View/modify ongoing projects</a>
+
+<br/>
+
+<a style="color:blue" th:href="@{/Users}">View/modify registered users</a>
+
+
+<form th:action="@{/logout}" method="post">
+    <br>
+    <input type="submit" style="font-weight: bold" value="Sign Out"/>
+</form>
+</div>
+</div>
+</body>
+</html>

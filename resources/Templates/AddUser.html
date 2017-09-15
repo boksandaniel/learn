@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link th:href="@{css/bootstrap.min.css}" href="../public/css/bootstrap.min.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/font-awesome.min.css}" href="../public/css/font-awesome.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/form-elements.css}" href="../public/css/form-elements.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/style.css}" href="../public/css/style.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/color.css}" href="../public/css/color.css"
+          rel="stylesheet" type="text/css" media="screen"/>
+
+
+</head>
+<body>
+
+
+    <title>New User</title>
+    <div class="container-fluid bkr2">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row ">
+                    <div class="col-md-12 title" >
+                        <h3 style="color: #262626; font-weight: bold"  class="margine">
+                            Add new user
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="row">
+                    <div class="col-md-12">
+<form method="post" name="comment_form" id="comment_form" th:action="@{/createUser}" role="form">
+    <br>
+    <h4 class="clrpdg" style="font-weight: bold"> First Name</h4>
+    <input type="text" class="clrpdg"  name="firstName "><br>
+    <h4 class="clrpdg" style="font-weight: bold">Last Name</h4>
+    <input type="text" class="clrpdg" name="lastName"><br>
+    <h4 class="clrpdg" style="font-weight: bold">Username</h4>
+    <input type="text" class="clrpdg" name="userName"><br>
+    <h4 class="clrpdg" style="font-weight: bold">Password</h4>
+    <input type="text" class="clrpdg" name="password"><br>
+    <h4 class="clrpdg" style="font-weight: bold">Email</h4>
+    <input type="text"class="clrpdg" name="email"><br>
+    <br>
+    <label class="clrpdg" style="font-weight: bold">Job title  </label>
+    <select name="jobId"><br>
+        <option value="" th:each="job: ${jobs}" th:value="${job.jobId}" th:text="${job.title}"></option>
+    </select>
+
+    <button  type="submit" class="clrpdg" id="submit" style="font-weight: bold" >Submit</button>
+
+</form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

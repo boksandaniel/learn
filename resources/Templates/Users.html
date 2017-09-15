@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+	  <link th:href="@{css/bootstrap.min.css}" href="../public/css/bootstrap.min.css"
+			rel="stylesheet" type="text/css" media="screen"/>
+	  <link th:href="@{css/font-awesome.min.css}" href="../public/css/font-awesome.css"
+			rel="stylesheet" type="text/css" media="screen"/>
+	  <link th:href="@{css/form-elements.css}" href="../public/css/form-elements.css"
+			rel="stylesheet" type="text/css" media="screen"/>
+	  <link th:href="@{css/style.css}" href="../public/css/style.css"
+			rel="stylesheet" type="text/css" media="screen"/>
+	  <link th:href="@{css/color.css}" href="../public/css/color.css"
+			rel="stylesheet" type="text/css" media="screen"/>
+
+  </head>
+  <body>
+  <title>Users</title>
+    <div class="container-fluid bkr">
+	<div class="row">
+		<div class="col-md-9">
+			<div class="row ">
+				<br>
+				<div class="col-md-12 title" >
+                    <h2 style="color: black"; class="mrg"  >
+						Users Management
+					</h2>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+				<div class="row">
+					<div class=" clr2 col-md-3 ">
+					<a href="Admin.html "><h3 style="color: #2b669a;  margin-left: 5%" > Go to Admin Page</h3> </a>
+					</div>
+				</div>
+					<a class="btn btn-primary clr3 "  th:href="@{'Users/AddUser'}">Add new user</a><br>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+	<div class="row">
+		<div class="col-md-12 ">
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-bordered">
+						<thead>
+						<tr>
+							<th>Id</th>
+							<th>First name</th>
+							<th>Last name</th>
+							<th>Username</th>
+							<th>Password</th>
+							<th>Job Id</th>
+							<th>Email</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr  th:each = "user: ${users}">
+                            <td th:text="${user.userId}">45</td>
+                            <td th:text="${user.firstName}">Mircea</td>
+							<td th:text="${user.lastName}">Badea</td>
+							<td th:text="${user.username}">Ion</td>
+							<td th:text="${user.password}">Ionescu</td>
+							<td th:text="${user.jobId}">45</td>
+							<td th:text="${user.email}">something@yahoo.com</td>
+                            <td><a class="cls2" th:href="@{'/Users/{userId}/EditUser'(userId=${user.userId})}">edit</a></td>
+                            <td><a class="cls2" th:href="@{'/Users/{userId}/deleteUser'(userId=${user.userId})}">delete</a></td>
+						</tr>
+						</tbody>
+					</table>
+                </div>
+            </div>
+		</div>
+	</div>
+</div>
+
+	<script th:src="@{../public/js/jquery-1.11.1.min.js}" rel="text/javascript"></script>
+	<script th:src="@{../public/js/bootstrap.min.js}" rel="text/javascript"></script>
+	<script th:src="@{../public/js/jquery.backstretch.min.js}" rel="text/javascript"></script>
+	<script th:src="@{../public/js/scripts.js}" rel="text/javascript"></script>
+</body>
+</html>

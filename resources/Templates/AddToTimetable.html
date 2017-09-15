@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+
+    <link th:href="@{css/bootstrap.min.css}" href="../public/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/font-awesome.min.css}" href="../public/css/font-awesome.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/form-elements.css}" href="../public/css/form-elements.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/style.css}" href="../public/css/style.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{css/color.css}" href="../public/css/color.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css}" rel="stylesheet"/>
+
+</head>
+<body>
+<title>Add new entry</title>
+
+<div class="container-fluid bkr2">
+    <div class="row">
+
+        <div class="col-md-9">
+            <div class="row ">
+                <div class="col-md-12 title" >
+                    <h4 style="color: #0f0f0f; font-weight: bold"  class="margine">
+                        Add new entry
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="post" name="comment_form" id="comment_form" th:action="@{/createEntry}" role="form">
+                        <br>
+                        <h2 class="clrpdg" style="font-weight: bold"> Project
+                        <select name="assignmentID">
+                        <option value="" th:each="project: ${projects}" th:each="assignment: ${assignments}" th:if="${project.projectId} eq ${assignment.projectId}" th:value="${assignment.assignmentId}" th:text="${project.projectName}"></option>
+                        </select></h2>
+                        <h2 class="clrpdg" style="font-weight: bold"> Date</h2>
+                        <input class="datepicker" type="text" name="date">
+                        <br>
+                        <h2 class="clrpdg" style="font-weight: bold">Number of hours (hh:mm:ss)</h2>
+                        <input type="text" name="hoursWorked" th:field="*{hoursWorked}"><br>
+                        <h2 class="clrpdg" style="font-weight: bold" th:if="${#fields.hasErrors('age')}" th:errors="*{hoursWorked}">Number of hours error</h2>
+                        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+-->
+<script type="text/javascript" src="../public/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            $(".datepicker").datepicker({
+                todayBtn: "linked",
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    });
+</script>
+</html>
